@@ -1,14 +1,22 @@
 # Global Finance Operations Analytics
 
-##  Project Overview
-The objective of this project is to build a traceable analytics pipeline that converts operational finance data into validated KPIs, investigation flags, and dashboard-ready reporting views. 
+I used Python, PostgreSQL and Tableau to turn **149,097 finance records** into repeatable monthly reporting across order-to-cash, procure-to-pay and record-to-report. I reconciled billing and procurement totals to the source files and kept flagged records available for review.
 
-The project evaluates three core financial processes, covering different reporting periods:
+The reporting layer includes **three monthly reporting tables and seven SQL views**. It feeds **four Tableau dashboards** covering billing and receivables, procurement spend, profitability and exceptions.
+
+[View all dashboard screenshots](dashboard/dashboard) · [Explore the analysis notebook](Global_Finance_Operations_Analytics_V2.ipynb) · [View the project slides](Global_Finance_Operations_Analytics.pptx)
+
+![Tableau dashboard showing monthly revenue, expenses and profit margin alongside account movements and investigation flags](dashboard/dashboard/D04%20Record-to-Report%20Financial%20Performance.png)
+
+## Finance processes
+
+The source datasets cover different reporting periods.
+
 * **OTC (Order-to-Cash):** Evaluates billing, receivables, and customer payment behaviour.
 * **PTP (Procure-to-Pay):** Analyses valid procurement spend and concentration.
 * **RTR (Record-to-Report):** Explains revenue, expenses, profit, and account movements.
 
-##  Architecture & Tech Stack
+## Architecture & Tech Stack
 The delivery follows a robust five-stage workflow:
 1. **Source Files:** Ingesting OTC CSVs, PTP workbooks, and RTR workbooks.
 2. **Python (Jupyter):** Performs EDA, data cleaning, field standardization, and predictive forecasting.
@@ -16,12 +24,12 @@ The delivery follows a robust five-stage workflow:
 4. **PostgreSQL:** Enforces the core analytical model, referential constraints, and serves unified reporting views.
 5. **Tableau:** Visualizes trends, concentration, risk, and executive performance across 16 worksheets and 4 dashboards.
 
-##  Data Scope
+## Data Scope
 * **OTC (Accounts Receivable):** 45,839 rows, 69 customers, covering £816.26M in total invoice amount (Nov 2011 to Mar 2016).
 * **PTP (Procurement):** 75,349 rows yielding 61,924 valid positive-spend lines, generating £24.00B equivalent valid gross spend (Jul 2012 to Apr 2019).
 * **RTR (General Ledger):** 27,909 journal lines across 3,992 unique entries and 38 mapped accounts (Jan 2018 to Dec 2020).
 
-##  Methodology & Phases
+## Methodology & Phases
 
 ### 1. Data Preparation & EDA (Python/Pandas)
 * **Standardisation:** Cleaned column names, parsed string/Excel serial dates, and converted financial measures to appropriate numeric types.
@@ -63,15 +71,15 @@ for view in views:
 
 ### 4. Data Visualisation (Tableau)
 Built interactive decision-ready dashboards designed for finance operations management:
-* **D01 Executive KPI Snapshot:** Provides an immediate view of billing, collection efficiency, procurement scale, and financial performance margins.
-* **D02 Order-to-Cash Performance & Receivables:** Highlights the divergence between billed amounts and closing AR, tracks Days Sales Outstanding (DSO), and maps customer payment risk (identifying high value vs. late payment rate combinations).
-* **D03 Procure-to-Pay Spend Analytics:** Monitors valid procurement spend, highlights month-over-month growth volatility, and ranks dominant material groups (e.g., Group 1500 dominating at 15.78B) while factoring in investigation flags.
-* **D04 Record-to-Report Financial Performance:** Connects revenue and expenses to net profit, detailing diverging account movements by financial-statement class and plotting journal-line volume against absolute posting sizes.
+* **[D01 Executive KPI Snapshot](dashboard/dashboard/01%20%20Executive%20KPI%20Cards.png):** Provides an immediate view of billing, collection efficiency, procurement scale, and financial performance margins.
+* **[D02 Order-to-Cash Performance & Receivables](dashboard/dashboard/D02%20Order-to-Cash%20Performance%20%26%20Receivables.png):** Highlights the divergence between billed amounts and closing AR, tracks Days Sales Outstanding (DSO), and maps customer payment risk (identifying high value vs. late payment rate combinations).
+* **[D03 Procure-to-Pay Spend Analytics](dashboard/dashboard/D03%20%20Procure-to-Pay%20Spend%20Analytics.png):** Monitors valid procurement spend, highlights month-over-month growth volatility, and ranks dominant material groups (e.g., Group 1500 dominating at 15.78B) while factoring in investigation flags.
+* **[D04 Record-to-Report Financial Performance](dashboard/dashboard/D04%20Record-to-Report%20Financial%20Performance.png):** Connects revenue and expenses to net profit, detailing diverging account movements by financial-statement class and plotting journal-line volume against absolute posting sizes.
 
-##  Conclusion
+## Conclusion
 The project successfully delivers an end-to-end portfolio pipeline spanning Python, PostgreSQL, and Tableau. It ensures analytical integrity, provides a governed reporting layer, and translates raw operations into prioritized investigation workflows for financial controllers.
 
 ---
-##  Author
+## Author
 **Tanishk Nanasaheb Shinde**
 *MSc Data Science, University of Bristol*
